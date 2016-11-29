@@ -14,6 +14,7 @@
 		D9C7DFCE1DEBA4F500E9B310 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C7DFCD1DEBA4F500E9B310 /* PhotosViewController.swift */; };
 		D9C7DFD01DEBAB2300E9B310 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C7DFCF1DEBAB2300E9B310 /* FlickrAPI.swift */; };
 		D9C7DFD21DECCA4E00E9B310 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C7DFD11DECCA4E00E9B310 /* PhotoStore.swift */; };
+		D9C7DFD41DECD7D500E9B310 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C7DFD31DECD7D500E9B310 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		D9C7DFCD1DEBA4F500E9B310 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		D9C7DFCF1DEBAB2300E9B310 /* FlickrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
 		D9C7DFD11DECCA4E00E9B310 /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
+		D9C7DFD31DECD7D500E9B310 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +62,10 @@
 			children = (
 				D9C7DFBF1DEBA45B00E9B310 /* Main.storyboard */,
 				D9C7DFBB1DEBA45B00E9B310 /* AppDelegate.swift */,
-				D9C7DFCD1DEBA4F500E9B310 /* PhotosViewController.swift */,
 				D9C7DFCF1DEBAB2300E9B310 /* FlickrAPI.swift */,
 				D9C7DFD11DECCA4E00E9B310 /* PhotoStore.swift */,
+				D9C7DFD31DECD7D500E9B310 /* Photo.swift */,
+				D9C7DFCD1DEBA4F500E9B310 /* PhotosViewController.swift */,
 				D9C7DFC21DEBA45B00E9B310 /* Assets.xcassets */,
 				D9C7DFC41DEBA45B00E9B310 /* LaunchScreen.storyboard */,
 				D9C7DFC71DEBA45B00E9B310 /* Info.plist */,
@@ -147,6 +150,7 @@
 				D9C7DFCE1DEBA4F500E9B310 /* PhotosViewController.swift in Sources */,
 				D9C7DFD21DECCA4E00E9B310 /* PhotoStore.swift in Sources */,
 				D9C7DFBC1DEBA45B00E9B310 /* AppDelegate.swift in Sources */,
+				D9C7DFD41DECD7D500E9B310 /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
