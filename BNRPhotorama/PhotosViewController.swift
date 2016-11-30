@@ -13,7 +13,7 @@ class PhotosViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     
-    var store: PhotoStore!
+    var store: PhotoStore! // ? var and !
     
     override func viewDidLoad()
     {
@@ -21,9 +21,28 @@ class PhotosViewController: UIViewController {
         
         store.fetchRecentPhotos() { (photosResult) -> Void in
             
-            switch photosResult {
+            switch photosResult
+            {
             case let .Success(photos):
                 print("Successfully found \(photos.count) recent photos.")
+                
+                if let firstPhoto = photos.first
+                {
+                    self.store.fetchImageDataForPhoto(photo: firstPhoto, completion: { (imageResult) in
+                        
+                        switch imageResult
+                        {
+                        case let .Success(image):
+                            OperationQueue.main.addOperation {
+                                self.imageView.image = image
+                            }
+                        case let .Failure(error):
+                            print("Error downloading image: \(error)")
+                        }
+                    })
+                }
+                
+                
             case let .Failure(error):
                 print("Error fetching recent photos: \(error)")
             }

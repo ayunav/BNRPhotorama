@@ -6,10 +6,21 @@
 //  Copyright © 2016 Ayuna NYC. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+enum ImageResult
+{
+    case Success(UIImage)
+    case Failure(Error)
+}
+
+enum PhotoError: Error
+{
+    case ImageCreationError
+}
 
 
-// constructs an URLSession and an URLRequest to fetch data from the API 
+// constructs an URLSession and an URLRequest to fetch data from the API
 class PhotoStore
 {
     
@@ -33,7 +44,6 @@ class PhotoStore
             // validate JSON data returned from the API request
             let result = self.processRecentPhotosRequest(data: data, error: error)
             completion(result)
-        
         }
         
         task.resume()
@@ -53,4 +63,40 @@ class PhotoStore
     }
     
     
+    // 4. fetch image data for a Photo object
+    func fetchImageDataForPhoto(photo: Photo, completion: @escaping (ImageResult) -> Void)
+    {
+        let photoURL = photo.remoteURL
+        let request = URLRequest(url: photoURL)
+        
+        let task = session.dataTask(with: request) {(data, response, error) -> Void in
+            let result = self.processImageRequest(data: data, error: error)
+            
+            if case let .Success(image) = result // could be  if result = case let .Success(image) ? 
+                
+            {
+                photo.image = image
+            }
+            
+            completion(result)
+        }
+        
+        task.resume()
+    }
+    
+    
+    func processImageRequest(data: Data?, error: Error?) -> ImageResult
+    {
+        guard let imageData = data, let image = UIImage(data: imageData) else
+        {
+            if data == nil
+            {
+                return .Failure(error!)
+            } else
+            {
+                return .Failure(PhotoError.ImageCreationError)
+            }
+        }
+        return .Success(image)
+    }
 }
