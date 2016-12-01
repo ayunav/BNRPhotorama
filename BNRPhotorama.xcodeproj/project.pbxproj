@@ -67,7 +67,7 @@
 				D9C7DFBF1DEBA45B00E9B310 /* Main.storyboard */,
 				D9C7DFBB1DEBA45B00E9B310 /* AppDelegate.swift */,
 				D9C7E0011DEF959C00E9B310 /* Models */,
-				D9C7E0071DEFEDD100E9B310 /* Web Services */,
+				D9C7E0071DEFEDD100E9B310 /* Networking */,
 				D9C7E0081DEFEDF800E9B310 /* Views */,
 				D9C7E0021DEF95A500E9B310 /* ViewControllers */,
 				D9C7DFC21DEBA45B00E9B310 /* Assets.xcassets */,
@@ -94,13 +94,13 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		D9C7E0071DEFEDD100E9B310 /* Web Services */ = {
+		D9C7E0071DEFEDD100E9B310 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				D9C7DFCF1DEBAB2300E9B310 /* FlickrAPI.swift */,
 				D9C7DFD11DECCA4E00E9B310 /* PhotoStore.swift */,
 			);
-			name = "Web Services";
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		D9C7E0081DEFEDF800E9B310 /* Views */ = {

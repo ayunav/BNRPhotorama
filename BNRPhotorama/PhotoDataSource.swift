@@ -11,14 +11,19 @@ import UIKit
 
 class PhotoDataSource: NSObject, UICollectionViewDataSource
 {
+    // MARK: - Properties
+    
     private let CellIdentifier = "PhotosUICollectionViewCellIdentifier"
     
     var photos = [Photo]()
+    
+    // MARK: - Data Source Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return photos.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {

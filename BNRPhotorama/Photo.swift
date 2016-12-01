@@ -23,6 +23,14 @@ class Photo
         self.remoteURL = remoteURL
         self.dateTaken = dateTaken
     }
-    
+}
 
+
+extension Photo: Equatable {}
+
+// operators must be declared outside of the scope of a specific type 
+
+func == (lhs: Photo, rhs: Photo) -> Bool
+{
+    return lhs.photoID == rhs.photoID
 }

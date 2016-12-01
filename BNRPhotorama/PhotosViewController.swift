@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -22,6 +22,7 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView.dataSource = photoDataSource
+        collectionView.delegate = self
         
         store.fetchRecentPhotos() { (photosResult) -> Void in
             OperationQueue.main.addOperation
@@ -38,7 +39,28 @@ class PhotosViewController: UIViewController {
                     self.collectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
                 }
         }
-        
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
+    {
+        let photo = photoDataSource.photos[indexPath.row]
+        
+        store.fetchImageDataForPhoto(photo: photo, completion:
+            { (result) -> Void in
+            
+            OperationQueue.main.addOperation
+                {
+                    // the most recent index path
+                let photoIndex = self.photoDataSource.photos.index(of: photo)!
+                let photoIndexPath = IndexPath(row: photoIndex, section: 0)
+                
+                    // when the request finishes, only update the cell if it's still visible
+                if let cell = self.collectionView.cellForItem(at: photoIndexPath) as? PhotoCollectionViewCell
+                {
+                    cell.updateWithImage(image: photo.image)
+                }
+            }
+        })
+    }
 }
