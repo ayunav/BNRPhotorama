@@ -33,11 +33,12 @@ class PhotoStore
     }()
  
     
-    // 2. construct URL to send the URLRequest, set a dataTask with request, fetch json data from the API,
+    // 2. construct URL to send the URLRequest, set a dataTask with request, fetch json data from the API
     func fetchRecentPhotos(completion: @escaping (PhotosResult) -> Void)
     {
-        let url = FlickrAPI.recentPhotosURL()
-        let request = URLRequest(url: url!)
+        guard let url = FlickrAPI.recentPhotosURL() else { return }
+        
+        let request = URLRequest(url: url)
         
         let task = session.dataTask(with: request) {(data, response, error) -> Void in
             
@@ -47,7 +48,6 @@ class PhotoStore
         }
         
         task.resume()
-    
     }
 
     

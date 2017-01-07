@@ -95,6 +95,7 @@ struct FlickrAPI
             }
 
             var finalPhotos = [Photo]()
+            
             for photoJSON in photosArray {
                 if let photo = photoFromJSONObject(json: photoJSON as! [String : AnyObject]) {
                     finalPhotos.append(photo)

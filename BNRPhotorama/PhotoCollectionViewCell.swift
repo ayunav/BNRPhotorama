@@ -40,9 +40,4 @@ class PhotoCollectionViewCell: UICollectionViewCell
         
         updateWithImage(image: nil)
     }
-    
-    
-    
-    
-    
 }
