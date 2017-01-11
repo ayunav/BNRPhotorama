@@ -11,12 +11,15 @@ import UIKit
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate {
     
-    @IBOutlet var collectionView: UICollectionView!
+    // MARK: - Properties
     
+    @IBOutlet var collectionView: UICollectionView!
     
     var store: PhotoStore! // ? var and !
     let photoDataSource = PhotoDataSource()
-    
+
+    // MARK: - View
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -42,12 +45,13 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
     }
     
     
+    // MARK: - UICollectioViewDelegate
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
         let photo = photoDataSource.photos[indexPath.row]
         
-        store.fetchImageDataForPhoto(photo: photo, completion:
-            { (result) -> Void in
+        store.fetchImageDataForPhoto(photo: photo, completion: { (result) -> Void in
             
             OperationQueue.main.addOperation
                 {
@@ -64,6 +68,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
         })
     }
     
+    
+    // MARK: - Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {

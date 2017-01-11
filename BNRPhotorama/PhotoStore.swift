@@ -64,6 +64,7 @@ class PhotoStore
     
     
     // 4. fetch image data for a Photo object
+    
     func fetchImageDataForPhoto(photo: Photo, completion: @escaping (ImageResult) -> Void)
     {
         if let image = photo.image
