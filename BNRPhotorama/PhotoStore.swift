@@ -67,8 +67,7 @@ class PhotoStore
     
     func fetchImageDataForPhoto(photo: Photo, completion: @escaping (ImageResult) -> Void)
     {
-        if let image = photo.image
-        {
+        if let image = photo.image {
             completion(.Success(image))
             return
         }
@@ -77,17 +76,15 @@ class PhotoStore
         let request = URLRequest(url: photoURL)
         
         let task = session.dataTask(with: request) {(data, response, error) -> Void in
+            
             let result = self.processImageRequest(data: data, error: error)
             
-            if case let .Success(image) = result // could be  if result = case let .Success(image) ? 
-                
-            {
+            if case let .Success(image) = result { // could be  if result = case let .Success(image) ?
                 photo.image = image
             }
             
             completion(result)
         }
-        
         task.resume()
     }
     
@@ -96,14 +93,13 @@ class PhotoStore
     {
         guard let imageData = data, let image = UIImage(data: imageData) else
         {
-            if data == nil
-            {
+            if data == nil {
                 return .Failure(error!)
-            } else
-            {
+            } else {
                 return .Failure(PhotoError.ImageCreationError)
             }
         }
         return .Success(image)
     }
+
 }
